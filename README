@@ -1,0 +1,61 @@
+Copyright (C) 2022 Fangyu Zhang(zfyyfz001@163.com)
+
+Research article:
+"Evolutionary connection sparsification (ECS) makes better solutions for fMRI-based autism identification tasks"
+Fangyu Zhang, Yanjie Wei, Jin Liu, Yi Pan
+
+------------------------------------------------------------------------------------
+Hardware requirement
+GPU: Tesla P100
+
+Software requirement:
+Driver Version: 418.87.01
+CUDA Version: 10.1
+Python 3.7
+Package               Version
+--------------------- ---------------------
+matplotlib            3.5.1
+networkx              2.6.3
+numpy                 1.20.2
+pandas                1.3.5
+scikit-learn          1.0.2
+scipy                 1.7.3
+sklearn               0.0
+sparselinear          0.0.5
+torch                 1.8.1+cu101
+torch-scatter         2.0.8
+torch-sparse          0.6.12
+torchaudio            0.8.1
+torchvision           0.9.1+cu101
+
+------------------------------------------------------------------------------------
+Instructions:
+
+1. Choose the architecture in line 218 ~ 246 of "ea_main.py"
+2. Run "ea_main.py" to execute the ECS algorithm
+    - SCDNN results during ECS process will be saved in "sc_log"
+    - Log of each generation of ECS will be saved in "ea_log"
+    - The final individual (masks) when ECS ended will be saved in "mask" which can be used to construct SCDNN
+3. Run "scdnn_fcdnn_main.py" to test the constructed SCDNN and FCDNN
+------------------------------------------------------------------------------------
+
+Files:
+
+cc400_1035_pcc_matrix_top_9000.npy:
+    1035 x 9000 matrix. Feature vectors of 505 ASD / 530 HC subjects. Each row represent one subject's feature vector
+
+ea_main.py
+    The ECS algorithm
+
+scdnn_fcdnn_main.py
+    Used to test the constructed FCDNN and SCDNN
+
+model:
+    Construct SCDNN and FCDNN model
+
+sc_linear.py:
+    Used to achieve SCDNN
+
+train_eval.py:
+    DNN training process which is also used for fitness evaluation in ECS
+------------------------------------------------------------------------------------
