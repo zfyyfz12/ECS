@@ -7,8 +7,7 @@ if __name__ == '__main__':
 
         # run SCDNN
         print(f'SCDNN_{lyr_1_out}_{lyr_2_out}_{lyr_3_out}')
-        mask = np.load(f'./mask/elite_mask_{lyr_1_out}_{lyr_2_out}.npy', allow_pickle=True).item() if lyr_3_out == 2 else \
-               np.load(f'./mask/elite_mask_{lyr_1_out}_{lyr_2_out}_{lyr_3_out}.npy', allow_pickle=True).item()   
+        mask = np.load(f'./mask/elite_mask_{lyr_1_out}_{lyr_2_out}_{lyr_3_out}.npy', allow_pickle=True).item()   
         train_and_eval('sc', mask, lyr_1_out, lyr_2_out, lyr_3_out, max_epoch = 1000, save_dnn=0)
 
         # run FCDNN
